@@ -3,6 +3,7 @@ package ie.atu;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class Main {
 
@@ -14,11 +15,12 @@ public class Main {
         File myFile = new File(fileName);
         String fileName2 = "File11.txt";
 
-        try(FileWriter writer = new FileWriter(fileName2)){
+
+        try(PrintWriter writer = new PrintWriter(new FileWriter(fileName2, true))){ //setting this to true keeps the old text printed to the file
             //Notice there is no close method called. This is a try with resources
 
-            writer.write("Text for file");
-            System.out.println("Successfuly printed to file");
+            writer.println("Text for file. ");
+            System.out.println("Successfully printed to file");
         }
         catch(IOException e){
             System.out.println("Error occured");
